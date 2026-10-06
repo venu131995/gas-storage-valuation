@@ -1,0 +1,179 @@
+{
+  "facility": {
+    "capacity": 1000000.0,
+    "n_levels": 61,
+    "inj_steps": 1,
+    "wdr_steps": 2,
+    "inj_cost": 0.02,
+    "wdr_cost": 0.01,
+    "fuel_loss": 0.01,
+    "rate": 0.04,
+    "start_level": 0,
+    "end_level": 0
+  },
+  "data": {
+    "series": "FRED DHHNGSP (Henry Hub spot, USD/MMBtu)",
+    "first": "1997-01-07",
+    "last": "2026-09-29",
+    "n_obs": 5697
+  },
+  "backtest": {
+    "calibration_window": [
+      "2010-01-04",
+      "2024-03-28"
+    ],
+    "storage_year": [
+      "2024-04-01",
+      "2025-03-31"
+    ],
+    "spot_range_usd": [
+      1.21,
+      9.86
+    ],
+    "models": {
+      "ou": {
+        "kappa": 4.9703,
+        "sigma": 1.0881,
+        "half_life_days": 50.9,
+        "loglik": 4786.6,
+        "aic": -9559.1
+      },
+      "mrjd": {
+        "kappa": 1.2869,
+        "sigma": 0.5402,
+        "half_life_days": 196.7,
+        "loglik": 6295.1,
+        "aic": -12570.2,
+        "jumps_per_year": 17.89,
+        "mean_log_jump": -0.0037,
+        "jump_std": 0.2167
+      }
+    },
+    "exante_usd_mm": {
+      "ou": {
+        "intrinsic": 1.0912,
+        "lsmc_in_sample": 1.8835,
+        "lsmc_in_sample_se": 0.0067,
+        "lsmc_out_of_sample": 1.8798,
+        "lsmc_out_of_sample_se": 0.0066,
+        "extrinsic_share": 0.4195
+      },
+      "mrjd": {
+        "intrinsic": 1.0076,
+        "lsmc_in_sample": 1.2017,
+        "lsmc_in_sample_se": 0.0113,
+        "lsmc_out_of_sample": 1.1973,
+        "lsmc_out_of_sample_se": 0.0113,
+        "extrinsic_share": 0.1584
+      }
+    },
+    "realised_usd_mm": {
+      "lsmc_policy_mrjd": 1.5984,
+      "lsmc_policy_ou": 1.7932,
+      "intrinsic_schedule": 1.1071,
+      "perfect_foresight": 3.3613
+    },
+    "mrjd_policy_capture_of_perfect_foresight": 0.4755,
+    "mrjd_policy_vs_intrinsic_schedule": 1.444
+  },
+  "current": {
+    "valuation_date": "2026-09-29",
+    "last_spot": 3.18,
+    "horizon": [
+      "2026-09-30",
+      "2027-09-16"
+    ],
+    "models": {
+      "ou": {
+        "kappa": 6.6583,
+        "sigma": 1.2461,
+        "half_life_days": 38.0,
+        "loglik": 5060.6,
+        "aic": -10107.2
+      },
+      "mrjd": {
+        "kappa": 2.13,
+        "sigma": 0.5879,
+        "half_life_days": 118.9,
+        "loglik": 6992.2,
+        "aic": -13964.3,
+        "jumps_per_year": 18.5,
+        "mean_log_jump": -0.0029,
+        "jump_std": 0.243
+      }
+    },
+    "aic_improvement_mrjd_vs_ou": 3857.2,
+    "seasonal_peak_to_trough_pct": 16.54,
+    "usd_mm": {
+      "ou": {
+        "intrinsic": 0.2771,
+        "lsmc_in_sample": 1.5366,
+        "lsmc_in_sample_se": 0.0065,
+        "lsmc_out_of_sample": 1.5294,
+        "lsmc_out_of_sample_se": 0.0066,
+        "extrinsic_share": 0.8188
+      },
+      "mrjd": {
+        "intrinsic": 0.4092,
+        "lsmc_in_sample": 1.1019,
+        "lsmc_in_sample_se": 0.0117,
+        "lsmc_out_of_sample": 1.1067,
+        "lsmc_out_of_sample_se": 0.0117,
+        "extrinsic_share": 0.6302
+      }
+    },
+    "usd_per_mmbtu_capacity_mrjd": 1.1067
+  },
+  "sensitivity": {
+    "volatility_mrjd": [
+      {
+        "vol_multiplier": 0.25,
+        "intrinsic": 0.2012,
+        "lsmc_out": 0.2597
+      },
+      {
+        "vol_multiplier": 0.5,
+        "intrinsic": 0.2366,
+        "lsmc_out": 0.4417
+      },
+      {
+        "vol_multiplier": 0.75,
+        "intrinsic": 0.3026,
+        "lsmc_out": 0.7127
+      },
+      {
+        "vol_multiplier": 1.0,
+        "intrinsic": 0.4092,
+        "lsmc_out": 1.0669
+      },
+      {
+        "vol_multiplier": 1.25,
+        "intrinsic": 0.572,
+        "lsmc_out": 1.5034
+      },
+      {
+        "vol_multiplier": 1.5,
+        "intrinsic": 0.8124,
+        "lsmc_out": 2.1151
+      }
+    ],
+    "deliverability_mrjd": [
+      {
+        "deliverability": "slow (fill 60d, empty 60d)",
+        "intrinsic": 0.3711,
+        "lsmc_out": 0.9679
+      },
+      {
+        "deliverability": "base (fill 60d, empty 30d)",
+        "intrinsic": 0.4092,
+        "lsmc_out": 1.0905
+      },
+      {
+        "deliverability": "fast (fill 30d, empty 20d)",
+        "intrinsic": 0.5864,
+        "lsmc_out": 1.303
+      }
+    ]
+  },
+  "runtime_seconds": 137.7
+}
